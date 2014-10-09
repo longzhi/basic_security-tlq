@@ -64,12 +64,20 @@ end
 
 # now allow SSH traffic through the firewall and restart SSH
 # unless otherwise specified, block everything
+# bash "opening ufw for ssh traffic" do
+#   user "root"
+#   code <<-EOC
+#   ufw default deny
+#   ufw allow 22
+#   ufw --force enable
+#   EOC
+# end
+
+# disable ufw -- added by dragon
 bash "opening ufw for ssh traffic" do
   user "root"
   code <<-EOC
-  ufw default deny
-  ufw allow 22
-  ufw --force enable
+  ufw disable
   EOC
 end
 
